@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>स्ट्रीट फूड डिलाइट</title>
+  <meta name="description" content="स्वादिष्ट स्ट्रीट फूड – घर जैसा स्वाद, दिल को छू जाने वाला खाना" />
+
+  <!-- Google Fonts: Inter (clean) + Playfair Display (elegant) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    /* Reset & Base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+      color: #2d3748;
+      background: #fffaf7;
+      overflow-x: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+    }
+
+    /* Typography */
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 800;
+      line-height: 1.3;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      color: #1a202c;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      color: #1a202c;
+      margin-bottom: 1rem;
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      color: #2d3748;
+    }
+
+    p {
+      font-size: 1rem;
+      color: #4a5568;
+      margin-bottom: 1rem;
+    }
+
+    /* Navigation - Premium Sticky Nav */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #e2e8f0;
+      padding: 1rem 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #d97706;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-links {
+      display: none;
+    }
+
+    .mobile-menu-btn {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: #4a5568;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+
+    /* Hero Section - Elegant & Mobile-First */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, rgba(255, 250, 247, 0), rgba(254, 243, 231, 0.95)), 
+                  url('/images/kuch\ testity.png') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem 1rem;
+      position: relative;
+    }
+
+    .hero-content {
+      max-width: 600px;
+      
+    }
+
+    .hero-content h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20rem;
+      color: #1a202c;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    }
+
+    #hero-p {
+      font-size: 1.1rem;
+      color: #1f1e1e;
+      margin-top: 200px;
+    }
+
+    /* .cta-button {
+      display: inline-block;
+      background: #d97706;
+      color: white;
+      padding: 14px 32px;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(217, 119, 6, 0.3);
+    } */
+
+    .cta-button:hover {
+      background: #b45309;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(217, 119, 6, 0.4);
+    }
+
+    /* Food Sections - Premium Cards */
+    .food-sections {
+      padding: 3rem 0;
+      background: #fff;
+    }
+
+    .food-item {
+      max-width: 1200px;
+      margin: 0 auto 3rem;
+      padding: 0 1rem;
+    }
+
+    .food-content {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .food-image {
+      width: 100%;
+      max-width: 300px;
+      height: 220px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+      border: 1px solid #e2e8f0;
+    }
+
+    .food-text {
+      text-align: center;
+      padding: 0 0.5rem;
+    }
+
+    .food-text p {
+      font-size: 0.95rem;
+      color: #64748b;
+    }
+
+    .food-price {
+      display: inline-block;
+      background: #fde68a;
+      color: #92400e;
+      padding: 0.4rem 1.2rem;
+      border-radius: 24px;
+      font-weight: 600;
+      font-size: 1rem;
+      border: 1px solid #fbbf24;
+    }
+
+    /* Owner Section - Elegant Bio */
+    .owner-section {
+      padding: 4rem 1rem;
+      background: #fefce8;
+      text-align: center;
+      border-top: 1px solid #fef3c7;
+    }
+
+    .owner-content {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .owner-image {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto 1.5rem;
+      border: 4px solid #fde68a;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .owner-content p {
+      font-size: 1rem;
+      color: #52525b;
+      line-height: 1.7;
+    }
+
+    /* Contact Section - Clean & Spaced */
+    .contact-section {
+      padding: 3rem 1rem;
+      background: #f8fafc;
+      text-align: center;
+    }
+
+    .contact-content {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      padding: 1rem;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      font-size: 1rem;
+      color: #1e293b;
+    }
+
+    .contact-icon {
+      font-size: 1.3rem;
+      color: #d97706;
+    }
+
+    /* Tablet & Desktop */
+    @media (min-width: 768px) {
+      .hero-content h1 {
+        font-size: 3.5rem;
+      }
+
+      .food-content {
+        flex-direction: row;
+        align-items: center;
+      }
+
+      .food-image, .food-text {
+        flex: 1;
+      }
+
+      .food-text {
+        text-align: left;
+        padding-left: 2rem;
+      }
+
+      .food-item:nth-child(even) .food-content {
+        flex-direction: row-reverse;
+      }
+
+      .food-item:nth-child(even) .food-text {
+        text-align: right;
+        padding-left: 0;
+        padding-right: 2rem;
+      }
+
+      .contact-info {
+        flex-direction: row;
+        justify-content: center;
+        gap: 1.5rem;
+      }
+
+      .contact-item {
+        flex: 1;
+        max-width: 250px;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: #4a5568;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      .nav-links a:hover {
+        color: #d97706;
+      }
+
+      .mobile-menu-btn {
+        display: none;
+      }
+
+      .food-image {
+        max-width: 350px;
+        height: 280px;
+      }
+
+      .food-text h3 {
+        font-size: 1.8rem;
+      }
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .food-item {
+      animation: fadeInUp 0.6s ease forwards;
+    }
+
+    .food-item:nth-child(2) { animation-delay: 0.1s; }
+    .food-item:nth-child(3) { animation-delay: 0.2s; }
+    .food-item:nth-child(4) { animation-delay: 0.3s; }
+    .food-item:nth-child(5) { animation-delay: 0.4s; }
+    .food-item:nth-child(6) { animation-delay: 0.5s; }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <div class="logo">🍽️ फ़ास्ट फ़ूड</div>
+      <ul class="nav-links">
+        <li><a href="#home">होम</a></li>
+        <li><a href="#menu">मेन्यू</a></li>
+        <li><a href="#owner">मालिक</a></li>
+        <li><a href="#contact">संपर्क</a></li>
+      </ul>
+     
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+<section id="home" class="hero">
+  <!-- Hero image -->
+  <!-- <img src="/images/kuch testity.png" alt="स्ट्रीट फूड" class="hero-image" /> -->
+
+  <!-- Overlay content -->
+  <div class="hero-content">
+    <h1>स्वादिष्ट फ़ास्ट फूड ❤️</h1>
+    <p id="hero-p">खुशबू बुलाए, स्वाद रोक न पाए 😋 </p>
+   
+  </div>
+</section>
+
+  <!-- Food Menu Sections -->
+  <section id="menu" class="food-sections">
+    <!-- Burger -->
+    <div class="food-item">
+      <div class="food-content">
+        <div class="food-image">
+          <img src="/images//pngtree-hamburger-cute-emoticon-picture-png-image_15096600.avif" alt="स्पेशल बर्गर">
+        </div>
+        <div class="food-text">
+          <h3>स्पेशल बर्गर</h3>
+          <p>हर बाइट, एक एहसास।</p>
+          <div class="food-price">₹20 </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Samosa -->
+    <div class="food-item">
+      <div class="food-content">
+        <div class="food-image">
+          <img src="/images//images (1).jpg" alt="क्रिस्पी समोसा">
+        </div>
+        <div class="food-text">
+          <h3>क्रिस्पी समोसा</h3>
+          <p>कुरकुरे, मसालेदार, तले हुए समोसे। </p>
+          <div class="food-price">₹ 20</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Momos -->
+    <div class="food-item">
+      <div class="food-content">
+        <div class="food-image">
+          <img src="/images//pngtree-steamed-momos-dumplings-with-spicy-sauce-cartoon-illustration-vector-png-image_21136993.png" alt="स्टीम मोमोज">
+        </div>
+        <div class="food-text">
+          <h3>स्टीम मोमोज</h3>
+         <p> एक प्लेट, कई यादें।</p>
+          <div class="food-price">₹ 10 </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rolls -->
+    <div class="food-item">
+      <div class="food-content">
+        <div class="food-image">
+          <img src="/images/pngtree-testy-fast-food-vagetable-role-png-image_20237390.png" alt="देसी रोल">
+        </div>
+        <div class="food-text">
+          <h3>देसी रोल</h3>
+          <p>लपेटा स्वाद, भरा अपनापन।</p>
+          <div class="food-price">₹ 20 </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fries -->
+    <div class="food-item">
+      <div class="food-content">
+        <div class="food-image">
+          <img src="/images/pngtree-a-plate-of-french-fries-with-ketchup-is-isolated-on-transparent-png-image_16351080 (1).png" alt="गोल्डन फ्राइज">
+        </div>
+        <div class="food-text">
+          <h3>गोल्डन फ्राइज</h3>
+          <p>कुरकुरे, सुनहरे, नमकीन फ्राइज – टमाटर सॉस और मेयो के साथ।</p>
+          <div class="food-price">₹ 20 </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cold Drinks -->
+    <div class="food-item">
+      <div class="food-content">
+        <div class="food-image">
+          <img src="/images//images (2).jpg" alt="ठंडे पेय पदार्थ">
+        </div>
+        <div class="food-text">
+          <h3>ठंडे पेय पदार्थ</h3>
+          <p>कोल्ड कॉफी – गर्मी में ताज़गी का एहसास।</p>
+          <div class="food-price">₹ 20 - ₹ 100</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Owner Section -->
+  <section id="owner" class="owner-section">
+    <div class="owner-content">
+      <div class="owner-image">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="मालिक">
+      </div>
+      <h2>हमारे बारे में</h2>
+      <p>6 सालों से स्ट्रीट फूड के प्रति प्रेम और समर्पण। हर डिश घर जैसा स्वाद देने के लिए बनाई जाती है। ताज़ा सामग्री, घर के नुस्खे, और बहुत प्यार। ग्राहकों की संतुष्टि हमारी सबसे बड़ी प्राथमिकता है।</p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact-section">
+    <div class="contact-content">
+      <h2>हमसे जुड़ें</h2>
+      <div class="contact-info">
+        <div class="contact-item">
+          <span class="contact-icon">📞</span>
+          <span>+91 98765 43210</span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon">📍</span>
+          <span>मुख्य बाजार, नई दिल्ली</span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon">⏰</span>
+          <span>9:00 AM - 11:00 PM (सभी दिन)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Smooth Scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          window.scrollTo({
+            top: target.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Navbar on Scroll
+    window.addEventListener('scroll', () => {
+      const nav = document.querySelector('nav');
+      if (window.scrollY > 50) {
+        nav.style.boxShadow = '0 4px 12px rgba(0,0,0,0.05)';
+      } else {
+        nav.style.boxShadow = 'none';
+      }
+    });
+  </script>
+</body>
+</html>
